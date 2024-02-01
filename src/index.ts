@@ -10,16 +10,15 @@ app.use(express.json())
 app.use(cors({
     origin: '*'
 }))
-app.use('/', router)
+app.use(router)
 
-// Health check
 app.get('/health', (req, res) => {
     res.send('OK')
 })
 
 try {
     app.listen(port, () => {
-        figlet('API REST', (err, data) => {
+        figlet('-------\nAPI REST\n-------', (err, data) => {
             if (err) {
                 console.log('Something went wrong...')
                 console.dir(err)
